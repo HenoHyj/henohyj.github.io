@@ -93,7 +93,7 @@ export const projects = [
     slug: 'surgical-vision', category: 'research', graphic: 'vision', featured: false, year: '2024 — 2025',
     title: p('Computer vision for surgical video', '手术视频中的计算机视觉'), subtitle: p('ARC Lab · UC San Diego', 'ARC Lab · UC San Diego'),
     summary: p('Segmentation, tracking, and the detection of kidney-stone fragmentation.', '分割、跟踪与肾结石碎片生成事件检测。'), tags: ['SAM', 'PyTorch', 'LoRA', 'Computer vision'],
-    metrics: [], scope: p('Research contribution as a co-author. Publication: Lasers in Medical Science, 2026. This work studies perception; it is not a claim of an autonomous clinical system.', '以共同作者身份参与的研究，发表于 2026 年 Lasers in Medical Science。工作范围为感知研究，不代表已实现自主临床系统。'),
+    metrics: [], scope: p('Co-authored perception research published in Lasers in Medical Science in 2026.', '以共同作者身份参与的感知研究，发表于 2026 年 Lasers in Medical Science。'),
     links: [{ label: p('Read the paper', '阅读论文'), url: 'https://doi.org/10.1007/s10103-026-04843-2' }, { label: 'PubMed', url: 'https://pubmed.ncbi.nlm.nih.gov/41784662/' }],
     sections: [
       { title: p('Working with limited clinical data', '有限临床数据下的建模'), text: p('At ARC Lab, adapted the Segment Anything Model with feature fusion to segment kidney stones in surgical video. Developed clustering and 2D tracking for real-time fragment analysis, trained LoRA adapters, and evaluated core model metrics.', '在 ARC Lab，结合特征融合适配 Segment Anything Model，开展手术视频中的结石分割；通过聚类和二维跟踪分析碎片，训练 LoRA 适配器并评估核心模型指标。') },
@@ -104,7 +104,7 @@ export const projects = [
     slug: 'settlyfe-backend', category: 'systems', graphic: 'retrieval', featured: false, year: '2025 — 2026',
     title: p('Retrieval & recommendations for Settlyfe', 'Settlyfe 的检索与推荐后端'), subtitle: p('Backend engineering internship', '后端开发实习'),
     summary: p('Connecting AI features with APIs, caching, and a relational data model.', '连接 AI 功能、API、缓存与关系型数据模型。'), tags: ['Java', 'Spring Boot', 'Redis', 'MySQL', 'RAG'],
-    metrics: [], scope: p('Internship work. No public repository or measured service-level improvement is claimed here.', '实习期间的工程工作。此处不展示未公开的仓库，也不添加未经记录的服务级性能数字。'),
+    metrics: [], scope: p('Backend engineering work completed during my Settlyfe internship.', '在 Settlyfe 实习期间完成的后端工程工作。'),
     sections: [
       { title: p('Retrieval and recommendations', '检索与推荐'), text: p('Designed and integrated a RAG pipeline for lease-contract review. Implemented an item-based collaborative-filtering recommendation engine with improved similarity scoring to shorten the search path for users.', '设计并集成租房合同审查 RAG 流程，实现基于改进相似度计算的物品协同过滤推荐引擎，缩短用户检索链路。') },
       { title: p('The service behind the feature', '功能背后的服务'), text: p('Built RESTful APIs with Java Spring Boot and Redis, and optimized MySQL schemas for frequent AI-driven requests. The work tied model-facing features to the application’s API and data layer.', '使用 Java Spring Boot 与 Redis 开发 RESTful API，并针对高频 AI 请求优化 MySQL Schema，将模型相关功能接入应用的 API 和数据层。') },

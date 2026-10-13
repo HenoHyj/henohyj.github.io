@@ -21,8 +21,20 @@ for(const file of pages) {
  const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
  if(new Set(ids).size!==ids.length)errors.push(`${relative}: duplicate element ID`);
  if([...html.matchAll(/<h1\b/g)].length!==1)errors.push(`${relative}: expected one primary heading`);
+ if(!/<title>[^<]+<\/title>/.test(html))errors.push(`${relative}: missing or malformed page title`);
+ for(const heading of html.matchAll(/<h[1-6]\b[^>]*>([\s\S]*?)<\/h[1-6]>/g)) {
+  if(/[.。]\s*$/.test(heading[1].replace(/<[^>]*>/g,'')))errors.push(`${relative}: heading ends in a full stop`);
+ }
  if(!html.includes('name="viewport"')||!html.includes('class="skip"'))errors.push(`${relative}: missing mobile viewport or skip link`);
  if(/TODO|placeholder|15999591553|619-953-9707|XR Team|C:[\\/]/i.test(html))errors.push(`${relative}: private data or unfinished copy`);
+ if(/GPU computing|GPU Computing|贺一杰|data-print|resume-intro|hero-intro|about-text|href="[^\"]*#about"/.test(html))errors.push(`${relative}: superseded copy or section`);
+ if(!relative.startsWith('zh')&&html.includes('贺逸杰'))errors.push(`${relative}: Chinese name in English page`);
+ if(relative==='index.html'||relative===path.join('zh','index.html')) {
+  if(/visual-index|project-year|id="about"/.test(html))errors.push(`${relative}: dates, numbering, or removed background section on home`);
+ }
+ if(relative.endsWith(path.join('resume','index.html'))) {
+  if([...html.matchAll(/href="\/files\/[^"]+\.pdf" download/g)].length!==2)errors.push(`${relative}: missing latest PDF resume downloads`);
+ }
  for(const match of html.matchAll(/\b(?:href|src)="([^"]+)"/g)) {
   const raw=match[1];
   if(!raw.startsWith('/')&&!raw.startsWith('#'))continue;

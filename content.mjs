@@ -1,25 +1,21 @@
 export const profile = {
   name: 'Yijie He', chineseName: '贺逸杰', email: 'henob22@gmail.com', github: 'https://github.com/HenoHyj',
   en: {
-    role: 'AI infrastructure & GPU computing',
-    intro: 'I work on the systems behind model inference — GPU kernels, low-precision computation, and the paths that connect them.',
-    about: 'I’m a Computer Engineering master’s student at UC San Diego. My work spans GPU kernel optimization at ByteDance, on-device AI infrastructure at Qualcomm, and medical computer vision research at ARC Lab. I also build inference tools and practical software outside of work.',
-    note: 'I like working through the details: where time goes, how data moves, and whether a change holds up when measured.',
+    role: 'ML systems & HPC',
+    description: 'Yijie He’s work in machine learning systems and high-performance computing: GPU kernel optimization, distributed inference, and hardware design.',
   },
   zh: {
-    role: 'AI 基础设施与 GPU 计算',
-    intro: '我关注模型推理背后的系统：GPU 算子、低精度计算，以及连接计算与硬件的执行路径。',
-    about: '我正在 UC San Diego 攻读计算机工程硕士。曾在字节跳动优化 GPU 算子，在高通参与端侧 AI 基础设施开发，在 ARC Lab 从事医学计算机视觉研究。工作之外，我也开发推理工具和日常使用的软件。',
-    note: '我喜欢把问题拆到具体环节：时间花在哪里，数据怎样流动，一次改动是否经得起测量。',
+    role: 'AI infrastructure 与高性能计算',
+    description: '贺逸杰在 AI infrastructure 与高性能计算领域的技术产出，涵盖 GPU 算子、推理系统和硬件设计。',
   },
 };
 
 const p = (en, zh) => ({ en, zh });
 export const experience = [
-  { company: 'ByteDance', place: p('AML · Heterogeneous Hardware', 'AML · 异构硬件'), date: p('Jun — Oct 2026', '2026.06 — 2026.10'), role: p('AI Infrastructure Intern', 'AI Infra 实习生'),
+  { company: 'ByteDance', place: p('AML · Volcano Ark · Heterogeneous GPUs', 'AML · 异构硬件'), date: p('Jun — Oct 2026', '2026.06 — 2026.10'), role: p('AI Inference Systems Intern', 'AI Infra 实习生'),
     description: p('Developed and optimized core video-generation kernels on AMD MI300X and MI355X: sparse attention, convolution, and communication–compute overlap.', '在 AMD MI300X / MI355X 上开发和优化视频生成模型的核心算子，覆盖稀疏注意力、卷积，以及通信与计算重叠。'),
     details: [p('Implemented an INT8 QK / FP8 PV attention path with block summaries and sparse routing.', '实现 INT8 QK / FP8 PV 注意力路径，结合块摘要与稀疏路由。'), p('Optimized Conv1D / Conv2D dispatch, layout conversion, and weight packing; made outputs consistent across solution changes.', '优化 Conv1D / Conv2D 分发、布局转换和权重预打包，消除 solution 切换带来的输出差异。'), p('Worked on chunked MoE All-to-All pipelines and asynchronous execution.', '参与分块 MoE All-to-All 流水线与异步执行优化。')] },
-  { company: 'Qualcomm', place: p('San Diego · On-device AI', '圣地亚哥 · 端侧 AI'), date: p('Jun — Sep 2025', '2025.06 — 2025.09'), role: p('Software Engineering Intern · AI Infrastructure', '软件工程实习生 · 端侧 AI Infra'),
+  { company: 'Qualcomm', place: p('San Diego · On-device AI', '圣地亚哥 · 端侧 AI'), date: p('Jun — Sep 2025', '2025.06 — 2025.09'), role: p('Software Engineering Intern · On-device AI Infrastructure', '软件工程实习生 · 端侧 AI Infra'),
     description: p('Ported and tuned FlashAttention-2 for an in-house mobile GPU, focusing on long-sequence inference, memory access, and local data reuse.', '在高通自研端侧 GPU 上移植与调优 FlashAttention-2，重点解决长序列推理中的访存与局部数据复用问题。'),
     details: [p('Adjusted tiling and memory access to reduce repeated reads and relieve bandwidth bottlenecks.', '调整分块和访存方式，减少重复读取，缓解带宽瓶颈。'), p('Used low-level instructions to address register spills; measured a 34% throughput improvement on the target workload.', '结合底层指令消除寄存器溢出，在目标负载上测得吞吐量提升 34%。'), p('Used internal profiling and hardware instrumentation to guide and validate kernel changes.', '使用内部 Profiler 与硬件打点定位瓶颈，指导并验证算子迭代。')] },
   { company: 'Settlyfe', place: p('San Diego · Backend', '圣地亚哥 · 后端'), date: p('Jun 2025 — Jan 2026', '2025.06 — 2026.01'), role: p('Backend Engineering Intern', '后端开发实习生'),
@@ -33,9 +29,9 @@ export const experience = [
 export const projects = [
   {
     slug: 'gpu-kernels', category: 'kernels', graphic: 'attention', featured: true, year: '2026',
-    title: p('Attention, convolution & GPU dataflow', '注意力、卷积与 GPU 数据流'),
+    title: p('AMD GPU kernel optimization', '注意力、卷积与 GPU 数据流'),
     subtitle: p('AMD MI300X / MI355X · ByteDance', 'AMD MI300X / MI355X · 字节跳动'),
-    summary: p('Optimizing the kernels that sit on the critical path of video generation.', '优化视频生成关键执行路径上的核心算子。'),
+    summary: p('HIP / ROCm kernels for sparse attention, convolution, and MoE communication.', '优化视频生成关键执行路径上的核心算子。'),
     tags: ['HIP', 'ROCm', 'INT8 / FP8', 'Composable Kernel'],
     metrics: [p(['1.82×', 'attention speedup'], ['1.82×', '注意力算子加速']), p(['+32%', 'Conv1D performance'], ['+32%', 'Conv1D 性能']), p(['+20%', 'Conv2D performance'], ['+20%', 'Conv2D 性能'])],
     scope: p('Target-workload measurements reported in my resume. Attention uses quantized block-summary approximation; these are operator results, not an end-to-end model speedup.', '数字来自简历中的目标负载测试。注意力路径使用量化块摘要近似；这些是算子级结果，不代表模型端到端加速。'),
@@ -47,31 +43,31 @@ export const projects = [
   },
   {
     slug: 'multimodal-inference', category: 'systems', graphic: 'routing', featured: true, year: '2026',
-    title: p('Multimodal inference on AMD GPUs', 'AMD GPU 上的多模态推理'), subtitle: p('vLLM-Omni · MiniMax H3', 'vLLM-Omni · MiniMax H3'),
-    summary: p('Work-aware routing, fused execution, and cancellation across ranks.', '工作量感知路由、融合执行与跨 rank 取消。'), tags: ['vLLM-Omni', 'HIP', 'Distributed inference'],
+    title: p('Distributed multimodal inference', 'AMD GPU 上的多模态推理'), subtitle: p('vLLM-Omni · MiniMax H3 · AMD GPUs', 'vLLM-Omni · MiniMax H3'),
+    summary: p('Inference serving with workload-aware routing, kernel fusion, and coordinated cancellation.', '工作量感知路由、融合执行与跨 rank 取消。'), tags: ['vLLM-Omni', 'HIP', 'Inference serving'],
     metrics: [p(['+11.44%', 'effective throughput'], ['+11.44%', '有效吞吐']), p(['3.19×', 'compute + packing'], ['3.19×', '计算与打包路径']), p(['−21%', 'completion time'], ['−21%', '完成耗时'])],
     scope: p('Separate experiments: mixed requests on a dual four-GPU topology; a fixed-shape fusion benchmark; and an eight-GPU test with 25% early cancellation. The gains are not additive.', '分别对应双四卡混合请求测试、固定形状融合路径测试，以及八卡 25% 请求早期取消测试。各项收益不能相加。'),
     sections: [
-      { title: p('Routing requests', '请求路由'), text: p('Deployed MiniMax H3 through vLLM-Omni on AMD GPUs. Fixed a fallback that ignored multi-replica configuration, then implemented workload-aware routing with load reservation, release, and rollback on errors. On the same dual four-GPU topology, the mixed long/short request test improved effective end-to-end throughput by 11.44%.', '基于 vLLM-Omni 在 AMD GPU 上部署 MiniMax H3，修复回退逻辑忽略多副本配置的问题。实现工作量感知路由以及负载预留、释放和异常回滚，在相同双四卡拓扑的长短混合请求测试中，有效端到端吞吐提升 11.44%。') },
+      { title: p('Workload-aware request routing', '请求路由'), text: p('Deployed MiniMax H3 through vLLM-Omni on AMD GPUs. Fixed a fallback that ignored multi-replica configuration, then implemented workload-aware routing with load reservation, release, and rollback on errors. On the same dual four-GPU topology, the mixed long/short request test improved effective end-to-end throughput by 11.44%.', '基于 vLLM-Omni 在 AMD GPU 上部署 MiniMax H3，修复回退逻辑忽略多副本配置的问题。实现工作量感知路由以及负载预留、释放和异常回滚，在相同双四卡拓扑的长短混合请求测试中，有效端到端吞吐提升 11.44%。') },
       { title: p('Fusing the execution path', '融合执行路径'), text: p('Following the Sol-H3 design, combined QKV exchange and fused QKNorm / RoPE with the send layout. This reduced communication calls and intermediate tensor reads and writes. The fixed-shape compute-and-packing path measured 3.19× faster than the original path.', '参考 Sol-H3 设计，实现 QKV 合并交换，并将 QKNorm / RoPE 与发送布局融合，减少通信调用和中间张量读写。固定形状下，计算与打包路径较原路径加速 3.19×。') },
-      { title: p('Stopping work safely', '一致地终止无效计算'), text: p('Adapted in-flight cancellation using shared-memory signals and coordinated rank exit. Also corrected nondeterministic audio decoding. In an eight-GPU test with 25% early cancellation, valid requests completed in 21% less total time, with audio and video output consistency verified.', '通过共享内存信号和跨 rank 一致退出，适配运行中取消机制；同时修复音频解码的非确定性问题。八卡 25% 请求早期取消测试中，有效请求全部完成耗时降低 21%，并验证音视频输出一致。') },
+      { title: p('Distributed request cancellation', '一致地终止无效计算'), text: p('Adapted in-flight cancellation using shared-memory signals and coordinated rank exit. Also corrected nondeterministic audio decoding. In an eight-GPU test with 25% early cancellation, valid requests completed in 21% less total time, with audio and video output consistency verified.', '通过共享内存信号和跨 rank 一致退出，适配运行中取消机制；同时修复音频解码的非确定性问题。八卡 25% 请求早期取消测试中，有效请求全部完成耗时降低 21%，并验证音视频输出一致。') },
     ],
   },
   {
     slug: 'amd-kernel-agent', category: 'systems', graphic: 'loop', featured: true, year: '2026 —',
-    title: p('An AMD kernel optimization agent', 'AMD 算子优化 Agent'), subtitle: p('Independent project · HIP / ROCm', '个人开发 · HIP / ROCm'),
-    summary: p('A development loop where code, correctness, profiling, and measurements stay connected.', '连接代码、正确性、profiling 与性能测量的开发流程。'), tags: ['Python', 'HIP / ROCm', 'Coding agents', 'Profiling'],
+    title: p('Agent-assisted GPU kernel optimization', 'AMD 算子优化 Agent'), subtitle: p('Independent project · HIP / ROCm', '个人开发 · HIP / ROCm'),
+    summary: p('Automated kernel development with correctness checks, profiling, and benchmark feedback.', '连接代码、正确性、profiling 与性能测量的开发流程。'), tags: ['HIP / ROCm', 'Coding agents', 'Profiling', 'Python'],
     metrics: [],
-    scope: p('An actively developed prototype. Individual experiments are validated against their own benchmark contracts; automatic generation does not guarantee a faster kernel.', '持续开发中的原型。各项实验依据自己的 benchmark contract 验证；自动生成实现并不保证算子更快。'),
+    scope: p('An actively developed prototype. Each experiment has predefined correctness and performance criteria; generated kernels are accepted only after validation.', '持续开发中的原型。各项实验依据自己的 benchmark contract 验证；自动生成实现并不保证算子更快。'),
     sections: [
-      { title: p('Keeping the experiment accountable', '让实验结论可以核对'), text: p('Built a workflow for HIP / ROCm kernel optimization that connects code generation, compilation, correctness checks, profiling, and supervised review. A predefined benchmark contract controls acceptance, and measured feedback drives the next iteration.', '独立开发 HIP / ROCm 算子优化流程，连接代码生成、编译、正确性验证、profiling 与监督审查。使用预设 benchmark contract 约束验收，以实测反馈驱动下一轮迭代。'), bullets: [p('Separate candidate development from final correctness and performance acceptance.', '将候选开发与最终正确性、性能验收分开。'), p('Preserve the implementation and measurement evidence associated with each experiment.', '保存每次实验对应的实现与测量证据。'), p('Reuse AMD architecture knowledge and bottleneck-specific tuning rules.', '复用 AMD 架构知识与面向具体瓶颈的调优规则。')] },
-      { title: p('Hardware-aware iteration', '面向硬件的迭代'), text: p('Applied the workflow to MoE, convolution, and VSA tasks, including cross-architecture adaptation to MI300X. The supporting vibeHIP work includes a real CLI worker, HIP compilation, correctness and timing checks, and compile-error recovery within a single worker session.', '将流程用于 MoE、卷积和 VSA 场景，包括向 MI300X 的跨架构适配。配套 vibeHIP 工作已接通真实 CLI worker、HIP 编译、正确性和计时检查，并支持在同一次 worker 调用内修复编译错误。') },
+      { title: p('Kernel development and validation', '让实验结论可以核对'), text: p('Built a HIP / ROCm kernel optimization workflow that connects code generation, compilation, correctness testing, profiling, and human review. Predefined correctness and performance criteria govern acceptance, and benchmark feedback guides the next iteration.', '独立开发 HIP / ROCm 算子优化流程，连接代码生成、编译、正确性验证、profiling 与监督审查。使用预设 benchmark contract 约束验收，以实测反馈驱动下一轮迭代。'), bullets: [p('Separate candidate development from final correctness and performance acceptance.', '将候选开发与最终正确性、性能验收分开。'), p('Preserve the implementation and measurement evidence associated with each experiment.', '保存每次实验对应的实现与测量证据。'), p('Reuse AMD architecture knowledge and bottleneck-specific tuning rules.', '复用 AMD 架构知识与面向具体瓶颈的调优规则。')] },
+      { title: p('Hardware-aware iteration', '面向硬件的迭代'), text: p('Applied the workflow to MoE, convolution, and VSA tasks, including cross-architecture adaptation to MI300X. Target experiments measured 10% higher MoE performance than the official implementation, and 1.08× VSA speedup over an optimized internal baseline. The supporting vibeHIP work includes a real CLI worker, HIP compilation, correctness and timing checks, and compile-error recovery within a single worker session.', '将流程用于 MoE、卷积和 VSA 场景，包括向 MI300X 的跨架构适配。目标实验中，MoE 性能较官方实现提升 10%，VSA 较内部已优化基线获得 1.08× 加速。配套 vibeHIP 工作已接通真实 CLI worker、HIP 编译、正确性和计时检查，并支持在同一次 worker 调用内修复编译错误。') },
     ],
   },
   {
     slug: 'low-precision-kernels', category: 'kernels', graphic: 'precision', featured: true, year: '2026',
-    title: p('Low-precision kernels on Blackwell', 'Blackwell 上的低精度算子'), subtitle: p('RTX 5090 · CUDA / Triton / CUTLASS', 'RTX 5090 · CUDA / Triton / CUTLASS'),
-    summary: p('From FP4 bit layouts to a working Tensor Core execution path.', '从 FP4 位布局到可运行的 Tensor Core 执行路径。'), tags: ['CUDA', 'Triton', 'CUTLASS', 'NVFP4', 'TMA'],
+    title: p('Low-precision GEMM on NVIDIA Blackwell', 'Blackwell 上的低精度算子'), subtitle: p('RTX 5090 · CUDA / Triton / CUTLASS', 'RTX 5090 · CUDA / Triton / CUTLASS'),
+    summary: p('NVFP4 encoding, memory layouts, and Tensor Core execution on the RTX 5090.', '从 FP4 位布局到可运行的 Tensor Core 执行路径。'), tags: ['CUDA', 'Triton', 'CUTLASS', 'NVFP4', 'TMA'],
     metrics: [p(['~2×', 'target GEMM speedup'], ['约 2×', '目标 GEMM 加速'])], scope: p('Compared with a BF16 baseline on the target test workload; this is a kernel benchmark, not a universal model-inference speedup.', '在目标测试负载上与 BF16 基线比较，为算子级测试，不代表所有模型推理都获得相同加速。'),
     sections: [
       { title: p('Rebuilding core operators', '复现核心算子'), text: p('Implemented and benchmarked Grouped Swizzling GEMM and FlashAttention-2 using CUDA and Triton. The work used implementation comparisons to understand scheduling, data movement, and inference-oriented kernel behavior.', '使用 CUDA 与 Triton 编写、复现并比较 Grouped Swizzling GEMM 和 FlashAttention-2，通过实现对照理解任务调度、数据搬运与推理场景下的算子行为。') },

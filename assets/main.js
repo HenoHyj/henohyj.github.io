@@ -19,4 +19,3 @@ document.addEventListener('keydown', event => {
     menu.focus();
   }
 });
-document.querySelector('[data-print]')?.addEventListener('click', () => window.print());

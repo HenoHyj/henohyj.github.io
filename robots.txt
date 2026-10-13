@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://henohyj.github.io/sitemap.xml
